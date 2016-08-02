@@ -1,10 +1,10 @@
 {
-  "name": "ChaseConey/LaravelDatadogHelper",
+  "name": "chaseconey/laravel-datadog-helper",
   "type": "library",
   "description": "A Laravel Datadog helper package.",
   "keywords": [
-    "ChaseConey",
-    "LaravelDatadogHelper"
+    "chaseconey",
+    "laravel-datadog-helper"
   ],
   "homepage": "https://github.com/chaseconey/laravel-datadog-helper",
   "license": "MIT",
