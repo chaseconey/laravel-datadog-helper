@@ -35,7 +35,20 @@ composer require chaseconey/laravel-datadog-helper
 ];
 ```
 
-### Step 3: Register Middleware
+### Step 3: Add Facade
+
+``` php
+
+// config/app.php
+
+'aliases' => [
+    ...
+    
+    'Datadog' => ChaseConey\LaravelDatadogHelper\Datadog::class
+];
+```
+
+### Step 4: Register Middleware
 
 ``` php
 
@@ -48,7 +61,7 @@ protected $middleware = [
     ];
 ```
 
-### Step 4: Publish configuration
+### Step 5: Publish configuration
 
 ```php
 php artisan vendor:publish --provider="ChaseConey\LaravelDatadogHelper\LaravelDatadogHelperServiceProvider"
