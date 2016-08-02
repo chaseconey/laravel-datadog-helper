@@ -48,6 +48,12 @@ protected $middleware = [
     ];
 ```
 
+### Step 4: Publish configuration
+
+```php
+php artisan vendor:publish --provider="ChaseConey\LaravelDatadogHelper\LaravelDatadogHelperServiceProvider"
+```
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
