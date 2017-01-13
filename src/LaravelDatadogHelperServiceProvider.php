@@ -34,6 +34,15 @@ class LaravelDatadogHelperServiceProvider extends ServiceProvider
             __DIR__ . '/../config/datadog-helper.php', 'datadog-helper'
         );
 
-        $this->app->bind('datadog', \Datadogstatsd::class);
+        \Datadogstatsd::configure(
+            config('datadog-helper.api_key'),
+            config('datadog-helper.application_key'),
+            config('datadog-helper.datadog_host'),
+            'TCP',
+            config('datadog-helper.statsd_server'),
+            config('datadog-helper.statsd_port')
+        );
+
+        $this->app->singleton('datadog', \Datadogstatsd::class);
     }
 }

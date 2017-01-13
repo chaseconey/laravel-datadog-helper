@@ -24,4 +24,15 @@ return [
     */
     'prefix' => 'app.example',
 
+
+    'api_key' => null,
+
+    'application_key' => null,
+
+    'datadog_host' => 'https://app.datadoghq.com',
+
+    'statsd_server' => 'localhost',
+
+    'statsd_port' => 8125
+
 ];
