@@ -38,7 +38,7 @@ class LaravelDatadogHelperServiceProvider extends ServiceProvider
             config('datadog-helper.api_key'),
             config('datadog-helper.application_key'),
             config('datadog-helper.datadog_host'),
-            'TCP',
+            config('datadog-helper.transport'),
             config('datadog-helper.statsd_server'),
             config('datadog-helper.statsd_port')
         );
