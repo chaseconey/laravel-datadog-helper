@@ -51,5 +51,4 @@ class LaravelDatadogHelper
 
         return "{$prefix}.{$metric}";
     }
-
 }

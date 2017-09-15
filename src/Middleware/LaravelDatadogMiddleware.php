@@ -25,5 +25,4 @@ class LaravelDatadogMiddleware
 
         return $response;
     }
-
 }
