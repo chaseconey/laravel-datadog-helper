@@ -24,7 +24,6 @@ return [
     */
     'prefix' => 'app.example',
 
-
     'api_key' => null,
 
     'application_key' => null,
@@ -33,6 +32,20 @@ return [
 
     'statsd_server' => 'localhost',
 
-    'statsd_port' => 8125
+    'statsd_port' => 8125,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Transport
+    |--------------------------------------------------------------------------
+    |
+    | Submitting events via TCP vs UDP
+    | TCP - High-confidence event submission. Will log errors on event submission error.
+    | UDP - "Fire and forget" event submission. Will not log errors on event submission error.
+    | No acknowledgement of submitted event from Datadog.
+    | Since the UDP method uses the a local dogstatsd instance you don't need to setup
+    | any additional application/api access.
+    */
+    'transport' => 'TCP'
 
 ];
