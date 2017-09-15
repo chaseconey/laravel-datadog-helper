@@ -6,6 +6,7 @@
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
 [![Total Downloads][ico-downloads]][link-downloads]
+[![StyleCI](https://styleci.io/repos/64763895/shield?branch=master)](https://styleci.io/repos/64763895)
 
 Laravel Datadog Helper helps you get your application metrics integrated into Laravel as fast as possible.
 
