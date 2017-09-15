@@ -14,13 +14,11 @@ class LaravelDatadogHelperServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
         $this->publishes(
             [
                 __DIR__ . '/../config/datadog-helper.php' => config_path('datadog-helper.php'),
             ]
         );
-
     }
 
     /**
