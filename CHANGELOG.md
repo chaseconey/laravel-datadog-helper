@@ -1,5 +1,29 @@
 # Change Log
 
+## [Unreleased](https://github.com/chaseconey/laravel-datadog-helper/tree/HEAD)
+
+[Full Changelog](https://github.com/chaseconey/laravel-datadog-helper/compare/0.7.0...HEAD)
+
+**Closed issues:**
+
+- Examples [\#4](https://github.com/chaseconey/laravel-datadog-helper/issues/4)
+
+**Merged pull requests:**
+
+- Cleanup a lot of code. Globally add prefix component. [\#7](https://github.com/chaseconey/laravel-datadog-helper/pull/7) ([chaseconey](https://github.com/chaseconey))
+- Apply fixes from StyleCI [\#6](https://github.com/chaseconey/laravel-datadog-helper/pull/6) ([chaseconey](https://github.com/chaseconey))
+- Apply fixes from StyleCI [\#3](https://github.com/chaseconey/laravel-datadog-helper/pull/3) ([chaseconey](https://github.com/chaseconey))
+
+## [0.7.0](https://github.com/chaseconey/laravel-datadog-helper/tree/0.7.0) (2017-09-15)
+[Full Changelog](https://github.com/chaseconey/laravel-datadog-helper/compare/0.6.0...0.7.0)
+
+**Merged pull requests:**
+
+- Allow UDP transport by configuration [\#1](https://github.com/chaseconey/laravel-datadog-helper/pull/1) ([jcalonso](https://github.com/jcalonso))
+
+## [0.6.0](https://github.com/chaseconey/laravel-datadog-helper/tree/0.6.0) (2017-01-13)
+[Full Changelog](https://github.com/chaseconey/laravel-datadog-helper/compare/0.5.0...0.6.0)
+
 ## [0.5.0](https://github.com/chaseconey/laravel-datadog-helper/tree/0.5.0) (2016-08-02)
 
 
