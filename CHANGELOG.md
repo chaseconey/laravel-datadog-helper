@@ -1,8 +1,7 @@
 # Change Log
 
-## [Unreleased](https://github.com/chaseconey/laravel-datadog-helper/tree/HEAD)
-
-[Full Changelog](https://github.com/chaseconey/laravel-datadog-helper/compare/0.7.0...HEAD)
+## [0.8.0](https://github.com/chaseconey/laravel-datadog-helper/tree/0.8.0) (2017-12-14)
+[Full Changelog](https://github.com/chaseconey/laravel-datadog-helper/compare/0.7.0...0.8.0)
 
 **Closed issues:**
 
