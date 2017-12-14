@@ -10,10 +10,16 @@
 
 Laravel Datadog Helper helps you get your application metrics integrated into Laravel as fast as possible.
 
-Features:
+### Requirements
 
-* Adds Datadog facade
+* Laravel >= 5
+* Datadog API Key
+
+### Features
+
+* Adds Datadog facade that wraps the official [DataDog/php-datadogstatsd](https://github.com/DataDog/php-datadogstatsd) library
 * Provides middleware for tracking response time metrics automatically
+* Allows prefixing all metrics that are sent for the whole application with common prefix
 
 ## Usage
 
@@ -56,10 +62,10 @@ composer require chaseconey/laravel-datadog-helper
 // app/Http/Kernal.php
 
 protected $middleware = [
-        ...
-        
-        \ChaseConey\LaravelDatadogHelper\Middleware\LaravelDatadogMiddleware::class
-    ];
+    ...
+
+    \ChaseConey\LaravelDatadogHelper\Middleware\LaravelDatadogMiddleware::class
+];
 ```
 
 ### Step 5: Publish configuration
@@ -67,6 +73,16 @@ protected $middleware = [
 ```php
 php artisan vendor:publish --provider="ChaseConey\LaravelDatadogHelper\LaravelDatadogHelperServiceProvider"
 ```
+
+## Examples
+
+This library wraps the official [DataDog/php-datadogstatsd](https://github.com/DataDog/php-datadogstatsd) library. All functions are inherited from the core implementation provided by this library with the exception of replacing `Datadogstatsd` with `Datadog` (the facade).
+
+For example:
+
+Instead of doing `Datadogstatsd::increment('my.sweet.metrics')`, you would use `Datadog::increment('my.sweet.metrics')`.
+
+For a full set of usage examples, [check out the library's usage README](https://github.com/DataDog/php-datadogstatsd#usage).
 
 ## Change log
 
