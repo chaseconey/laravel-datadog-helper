@@ -2,7 +2,8 @@
 
 namespace ChaseConey\LaravelDatadogHelper\Middleware;
 
-use Closure, Datadog;
+use Closure;
+use Datadog;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -45,5 +46,4 @@ class LaravelDatadogMiddleware
 
         Datadog::timing('request_time', $duration, 1, $tags);
     }
-
 }

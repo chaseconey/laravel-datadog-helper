@@ -8,7 +8,8 @@ class LaravelDatadogHelper extends \Datadogstatsd
     /**
      * {@inheritdoc}
      */
-    public static function send($data, $sampleRate = 1.0, array $tags = null) {
+    public static function send($data, $sampleRate = 1.0, array $tags = null)
+    {
         $prefixedData = self::prefixData($data);
         parent::send($prefixedData, $sampleRate, $tags);
     }
@@ -44,5 +45,4 @@ class LaravelDatadogHelper extends \Datadogstatsd
 
         return "{$prefix}.{$metric}";
     }
-
 }
