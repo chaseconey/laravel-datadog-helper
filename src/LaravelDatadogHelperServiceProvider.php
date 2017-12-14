@@ -41,6 +41,6 @@ class LaravelDatadogHelperServiceProvider extends ServiceProvider
             config('datadog-helper.statsd_port')
         );
 
-        $this->app->singleton('datadog', \Datadogstatsd::class);
+        $this->app->singleton('datadog', LaravelDatadogHelper::class);
     }
 }

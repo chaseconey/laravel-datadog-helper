@@ -2,43 +2,37 @@
 
 namespace ChaseConey\LaravelDatadogHelper;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-
-class LaravelDatadogHelper
+class LaravelDatadogHelper extends \Datadogstatsd
 {
 
     /**
-     * @param Request $request
-     * @param Response $response
-     * @param double $startTime
+     * {@inheritdoc}
      */
-    public static function handle(Request $request, Response $response, $startTime)
+    public static function send($data, $sampleRate = 1.0, array $tags = null)
     {
-        static::logDuration($request, $response, $startTime);
+        $prefixedData = self::prefixData($data);
+        parent::send($prefixedData, $sampleRate, $tags);
     }
 
     /**
-     * Logs the duration of a specific request through the application
+     * Takes normal data array from Datadogstatsd library and adds the Laravel prefix functionality
      *
-     * @param Request $request
-     * @param Response $response
-     * @param double $startTime
+     * @param $data
+     * @return array
      */
-    protected static function logDuration(Request $request, Response $response, $startTime)
+    protected static function prefixData($data)
     {
-        $duration = microtime(true) - $startTime;
-        $metric = self::prefix('request_time');
-
-        $tags = [
-            "url" => $request->getSchemeAndHttpHost() . $request->getRequestUri(),
-            "status_code" => $response->getStatusCode()
-        ];
-
-        Datadog::timing($metric, $duration, 1, $tags);
+        $prefixedData = array();
+        foreach ($data as $stat => $value) {
+            $prefixedKey = self::prefix($stat);
+            $prefixedData[$prefixedKey] = $value;
+        }
+        return $prefixedData;
     }
 
     /**
+     * Prefixes a metric name if one is available via config
+     *
      * @return string
      */
     protected static function prefix($metric)
