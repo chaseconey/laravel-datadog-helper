@@ -21,41 +21,17 @@ Laravel Datadog Helper helps you get your application metrics integrated into La
 * Provides middleware for tracking response time metrics automatically
 * Allows prefixing all metrics that are sent for the whole application with common prefix
 
-## Usage
+## Installation
 
-### Step 1: Install Through Composer
+Require this package with composer.
 
-```
+```shell
 composer require chaseconey/laravel-datadog-helper
 ```
 
-### Step 2: Add Service Provider to providers array in app config file.
+Laravel 5.5 uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider.
 
-``` php
-
-// config/app.php
-
-'providers' => [
-    ...
-    
-    ChaseConey\LaravelDatadogHelper\LaravelDatadogHelperServiceProvider::class,
-];
-```
-
-### Step 3: Add Facade
-
-``` php
-
-// config/app.php
-
-'aliases' => [
-    ...
-    
-    'Datadog' => ChaseConey\LaravelDatadogHelper\Datadog::class
-];
-```
-
-### Step 4: Register Middleware
+If you would like to install the request metric tracking middleware, add the Datadog middleware class like so:
 
 ``` php
 
@@ -68,9 +44,37 @@ protected $middleware = [
 ];
 ```
 
-### Step 5: Publish configuration
+### Without Auto-Discovery (or Laravel < 5.5)
 
-```php
+If you don't use auto-discovery, or you are using an older version of Laravel, add the ServiceProvider to the providers array in `config/app.php`
+
+``` php
+
+// config/app.php
+
+'providers' => [
+    ...
+    
+    ChaseConey\LaravelDatadogHelper\LaravelDatadogHelperServiceProvider::class,
+];
+```
+
+If you want to use the facade, add this to your facades in `config/app.php`:
+
+``` php
+
+// config/app.php
+
+'aliases' => [
+    ...
+    
+    'Datadog' => ChaseConey\LaravelDatadogHelper\Datadog::class
+];
+```
+
+For configuration options, copy the package config to your local config with the publish command:
+
+```shell
 php artisan vendor:publish --provider="ChaseConey\LaravelDatadogHelper\LaravelDatadogHelperServiceProvider"
 ```
 
