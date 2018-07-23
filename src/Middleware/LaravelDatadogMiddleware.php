@@ -40,9 +40,12 @@ class LaravelDatadogMiddleware
         $duration = microtime(true) - $startTime;
 
         $tags = [
-            "url" => $request->getSchemeAndHttpHost() . $request->getRequestUri(),
             "status_code" => $response->getStatusCode()
         ];
+
+        if (!config('datadog-helper.middleware_disable_url_tag', false)) {
+            $tags["url"] = $request->getSchemeAndHttpHost() . $request->getRequestUri();
+        }
 
         Datadog::timing('request_time', $duration, 1, $tags);
     }

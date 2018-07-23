@@ -36,6 +36,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Disable tagging request durations with url
+    |--------------------------------------------------------------------------
+    |
+    | Sites with large numbers of unique URIs can cause excessive unique tags for a metric which results
+    | in Datadog being unhappy (to the point of being unresponsive).
+    |
+    */
+    'middleware_disable_url_tag' => false,
+
+    /*
+    |--------------------------------------------------------------------------
     | Transport
     |--------------------------------------------------------------------------
     |
