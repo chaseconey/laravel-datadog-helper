@@ -35,7 +35,7 @@ If you would like to install the request metric tracking middleware, add the Dat
 
 ``` php
 
-// app/Http/Kernal.php
+// app/Http/Kernel.php
 
 protected $middleware = [
     ...
