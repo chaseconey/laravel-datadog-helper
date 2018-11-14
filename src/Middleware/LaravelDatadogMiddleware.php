@@ -3,7 +3,7 @@
 namespace ChaseConey\LaravelDatadogHelper\Middleware;
 
 use Closure;
-use Datadog;
+use ChaseConey\LaravelDatadogHelper\Datadog;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
