@@ -1,5 +1,5 @@
 {
-  "name": "barbushin/laravel-datadog-helper",
+  "name": "chaseconey/laravel-datadog-helper",
   "type": "library",
   "description": "A Laravel Datadog helper package.",
   "keywords": [
