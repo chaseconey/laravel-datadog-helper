@@ -22,7 +22,7 @@ return [
     | inside of your prefix. A common naming scheme is something like app.<app-name>.
     |
     */
-    'prefix' => 'app.example',
+    'prefix' => null, // metrics prefix
 
     'api_key' => null,
 

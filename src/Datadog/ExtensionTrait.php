@@ -1,6 +1,6 @@
 <?php namespace ChaseConey\LaravelDatadogHelper\Datadog;
 
-trait MetricPrefixTrait
+trait ExtensionTrait
 {
     protected $metricsPrefix;
 
@@ -17,7 +17,7 @@ trait MetricPrefixTrait
 
         $wrapped = [];
         foreach($data as $metric => $stat) {
-            $wrapped[$this->metricsPrefix] = $stat;
+            $wrapped[$this->metricsPrefix . '.'. $metric] = $stat;
         }
         return $wrapped;
     }
