@@ -34,6 +34,10 @@ return [
 
     'statsd_port' => 8125,
 
+    'global_tags' => [],
+
+    'max_buffer_length' => 1,
+
     /*
     |--------------------------------------------------------------------------
     | Disable tagging request durations with url
@@ -44,19 +48,4 @@ return [
     |
     */
     'middleware_disable_url_tag' => false,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Transport
-    |--------------------------------------------------------------------------
-    |
-    | Submitting events via TCP vs UDP
-    | TCP - High-confidence event submission. Will log errors on event submission error.
-    | UDP - "Fire and forget" event submission. Will not log errors on event submission error.
-    | No acknowledgement of submitted event from Datadog.
-    | Since the UDP method uses the a local dogstatsd instance you don't need to setup
-    | any additional application/api access.
-    */
-    'transport' => 'UDP'
-
 ];
