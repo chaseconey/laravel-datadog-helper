@@ -11,12 +11,12 @@ trait ExtensionTrait
 
     protected function wrapSendDataWithMetricPrefix($data)
     {
-        if(!$this->metricsPrefix) {
+        if (!$this->metricsPrefix) {
             return $data;
         }
 
         $wrapped = [];
-        foreach($data as $metric => $stat) {
+        foreach ($data as $metric => $stat) {
             $wrapped[$this->metricsPrefix . '.'. $metric] = $stat;
         }
         return $wrapped;

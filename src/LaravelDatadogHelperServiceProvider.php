@@ -31,8 +31,7 @@ class LaravelDatadogHelperServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
-        $this->app->singleton('datadog', function() {
+        $this->app->singleton('datadog', function () {
             return $this->initDatadog();
         });
     }
@@ -56,11 +55,10 @@ class LaravelDatadogHelperServiceProvider extends ServiceProvider
         ];
 
         $maxBuffer = $laravelConfig['max_buffer_length'];
-        if($maxBuffer > 1) {
+        if ($maxBuffer > 1) {
             $datadog = new BatchedDogStatsd($ddConfig);
             $datadog::$maxBufferLength = $maxBuffer;
-        }
-        else {
+        } else {
             $datadog = new DogStatsd($ddConfig);
         }
 
