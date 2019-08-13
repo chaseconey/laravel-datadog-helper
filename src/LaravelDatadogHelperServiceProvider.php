@@ -2,6 +2,8 @@
 
 namespace ChaseConey\LaravelDatadogHelper;
 
+use ChaseConey\LaravelDatadogHelper\Datadog\BatchedDogStatsd;
+use ChaseConey\LaravelDatadogHelper\Datadog\DogStatsd;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelDatadogHelperServiceProvider extends ServiceProvider
@@ -14,6 +16,7 @@ class LaravelDatadogHelperServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /** @noinspection PhpUndefinedFunctionInspection */
         $this->publishes(
             [
                 __DIR__ . '/../config/datadog-helper.php' => config_path('datadog-helper.php'),
@@ -28,19 +31,39 @@ class LaravelDatadogHelperServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton('datadog', function () {
+            return $this->initDatadog();
+        });
+    }
+
+    protected function initDatadog()
+    {
         $this->mergeConfigFrom(
             __DIR__ . '/../config/datadog-helper.php', 'datadog-helper'
         );
 
-        \Datadogstatsd::configure(
-            config('datadog-helper.api_key'),
-            config('datadog-helper.application_key'),
-            config('datadog-helper.datadog_host'),
-            config('datadog-helper.transport'),
-            config('datadog-helper.statsd_server'),
-            config('datadog-helper.statsd_port')
-        );
+        /** @noinspection PhpUndefinedFunctionInspection */
+        $laravelConfig = config('datadog-helper');
 
-        $this->app->singleton('datadog', LaravelDatadogHelper::class);
+        $ddConfig = [
+            'host' => $laravelConfig['statsd_server'],
+            'port' => $laravelConfig['statsd_port'],
+            'datadog_host' => $laravelConfig['datadog_host'],
+            'api_key' => $laravelConfig['api_key'],
+            'app_key' => $laravelConfig['application_key'],
+            'global_tags' => $laravelConfig['global_tags'],
+        ];
+
+        $maxBuffer = $laravelConfig['max_buffer_length'];
+        if ($maxBuffer > 1) {
+            $datadog = new BatchedDogStatsd($ddConfig);
+            $datadog::$maxBufferLength = $maxBuffer;
+        } else {
+            $datadog = new DogStatsd($ddConfig);
+        }
+
+        $datadog->setMetricsPrefix($laravelConfig['prefix']);
+
+        return $datadog;
     }
 }
