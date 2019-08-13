@@ -78,6 +78,102 @@ For configuration options, copy the package config to your local config with the
 php artisan vendor:publish --provider="ChaseConey\LaravelDatadogHelper\LaravelDatadogHelperServiceProvider"
 ```
 
+## Middleware
+
+This package comes with a handy middleware that you can add to any Laravel project to get up and running in Datadog as fast as possible.
+
+- **Metric Name:** `request_time`
+- **Value:** The time it takes Laravel to respond to request
+- **Tags:**:
+    - `status_code`
+    - `url` (toggle via `datadog.middleware_disable_url_tag` config option)
+    - *any custom tags you have added to `datadog.global_tags`*
+
+With just these metrics here are a couple of example graphs that you can make:
+
+![](datadog-screen.png?raw=true)
+
+<details><summary>Datadog Graph Config JSON</summary>
+<p>
+
+#### Max Request Time by URL
+
+```json
+{
+  "viz": "heatmap",
+  "requests": [
+    {
+      "q": "max:app.example.request_time.max{*} by {url}",
+      "type": null,
+      "style": {
+        "palette": "dog_classic",
+        "type": "solid",
+        "width": "normal"
+      },
+      "aggregator": "avg",
+      "conditional_formats": []
+    }
+  ],
+  "autoscale": true
+}
+```
+
+
+#### Top Pages Hit
+
+```json
+{
+  "viz": "toplist",
+  "requests": [
+    {
+      "q": "top(sum:app.example.request_time.count{*} by {url}.as_count(), 10, 'sum', 'desc')",
+      "type": null,
+      "style": {
+        "palette": "warm",
+        "type": "solid",
+        "width": "normal"
+      },
+      "conditional_formats": []
+    }
+  ]
+}
+```
+
+#### Slowest Endpoints/Pages
+
+```json
+{
+  "viz": "toplist",
+  "requests": [
+    {
+      "q": "top(max:app.example.request_time.max{*} by {url}, 10, 'max', 'desc')",
+      "type": null,
+      "style": {
+        "palette": "dog_classic",
+        "type": "solid",
+        "width": "normal"
+      },
+      "conditional_formats": [
+        {
+          "palette": "white_on_red",
+          "value": 5,
+          "comparator": ">"
+        },
+        {
+          "palette": "white_on_green",
+          "value": 5,
+          "comparator": "<="
+        }
+      ]
+    }
+  ]
+}
+```
+
+</p>
+</details>
+
+
 ## Examples
 
 This library wraps the official [DataDog/php-datadogstatsd](https://github.com/DataDog/php-datadogstatsd) library. All functions are inherited from the core implementation provided by this library with the exception of replacing `Datadogstatsd` with `Datadog` (the facade).
