@@ -18,7 +18,7 @@
   ],
   "require": {
     "php": ">=5.4.0",
-    "datadog/php-datadogstatsd": "~1.0",
+    "datadog/php-datadogstatsd": "^1.4.0",
     "illuminate/support": "~5.1"
   },
   "require-dev": {
