@@ -48,6 +48,7 @@ class LaravelDatadogHelperServiceProvider extends ServiceProvider
         $ddConfig = [
             'host' => $laravelConfig['statsd_server'],
             'port' => $laravelConfig['statsd_port'],
+            'socket_path' => $laravelConfig['statsd_socket_path'],
             'datadog_host' => $laravelConfig['datadog_host'],
             'api_key' => $laravelConfig['api_key'],
             'app_key' => $laravelConfig['application_key'],

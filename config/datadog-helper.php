@@ -34,6 +34,8 @@ return [
 
     'statsd_port' => 8125,
 
+    'statsd_socket_path' => null,
+
     'global_tags' => [],
 
     'max_buffer_length' => 1,
