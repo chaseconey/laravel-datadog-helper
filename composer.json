@@ -1,13 +1,12 @@
 {
-  "name": "fiftytruck/laravel-datadog-helper",
+  "name": "chaseconey/laravel-datadog-helper",
   "type": "library",
   "description": "A Laravel Datadog helper package.",
   "keywords": [
     "chaseconey",
-    "fiftytruck",
     "laravel-datadog-helper"
   ],
-  "homepage": "https://github.com/fiftytruck/laravel-datadog-helper",
+  "homepage": "https://github.com/chaseconey/laravel-datadog-helper",
   "license": "MIT",
   "authors": [
     {
