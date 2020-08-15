@@ -47,6 +47,6 @@ class LaravelDatadogMiddleware
             $tags["url"] = $request->getSchemeAndHttpHost() . $request->getRequestUri();
         }
 
-        Datadog::timing('request_time', $duration, 1, $tags);
+        Datadog::microtiming('request_time', $duration, 1, $tags);
     }
 }
