@@ -5,7 +5,7 @@ namespace ChaseConey\LaravelDatadogHelper;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \ChaseConey\LaravelDatadogHelper
+ * @see LaravelDatadogHelper
  * @see \Datadog\DogStatsd
  *
  * @method static void timing(string $stat, float $time, float $sampleRate = 1.0, array|string $tags = null)
