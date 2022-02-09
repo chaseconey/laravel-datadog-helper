@@ -39,7 +39,8 @@ class LaravelDatadogHelperServiceProvider extends ServiceProvider
     protected function initDatadog()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/datadog-helper.php', 'datadog-helper'
+            __DIR__ . '/../config/datadog-helper.php',
+            'datadog-helper'
         );
 
         /** @noinspection PhpUndefinedFunctionInspection */
