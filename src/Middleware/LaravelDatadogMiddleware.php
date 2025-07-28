@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class LaravelDatadogMiddleware
 {
-
     /**
      * @param $request
      * @param Closure $next
